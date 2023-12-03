@@ -240,18 +240,19 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim2) {
   // Cập nhật giá trị CCR
-  if (htim2->Channel == TIM_CHANNEL_1) {
-    htim2->Instance->CCR1 = htim2->Instance->CCR1 + 1;
-    if (htim2->Instance->CCR1 >= htim2->Init.Period) {
-      htim2->Instance->CCR1 = 0;
-    }
-  } else if (htim2->Channel == TIM_CHANNEL_2) {
-    htim2->Instance->CCR2 = htim2->Instance->CCR2 - 1;
-    if (htim2->Instance->CCR2 <= 0) {
-      htim2->Instance->CCR2 = htim2->Init.Period;
-    }
-  }
-}
+ while(1){
+  if (htim2->Channel == TIM_CHANNEL_1)    {   // Chọn channel 1;   Init.Period là ARR
+    for( CCR1 = 1; CCR1 <= Init.Period; CCR1++){        //LED sáng dần     
+     htim2->Instance-> CCR1;
+      }
+   if(CCR1=8){
+    for( CCR1 = Init.Period; CCR1 >= 1; CCR1--){        //LED tắt dần
+     htim2->Instance-> CCR1;}
+                                     
+             }
+                                          }
+         }
+                                                                }
 /* USER CODE END 4 */
 
 /**
